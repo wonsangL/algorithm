@@ -8,24 +8,33 @@ typedef struct _node {
 void insert(int, node**);
 
 int main() {
-	int input = 0, i;
+	int input = 0, i = 1;
 	node * head = NULL;
 	
 	scanf_s("%d", &input);
 
-	for (i = 1; i <= input / 2; i++) {
+	while (input / i >= i) {
 		if (input % i == 0) {
-			insert(i, &head);
-			insert(input / i, &head);
-		}
+			if (input / i != i) {
+				insert(i, &head);
+				insert(input / i, &head);
+			}
+			else {
+				insert(i, &head);
+			}
+		}	
+		i++;
 	}
 
-	while (head->next != NULL) {
+
+	while (head != NULL) {
 		printf("%d ", head->value);
 		head = head->next;
 	}
 	printf("\n");
 
+
+	free(head);
 	return 0;
 }
 
@@ -43,7 +52,7 @@ void insert(int value, node **head) {
 
 	current = *head;
 
-	while (current->next != NULL) {
+	while (current != NULL) {
 		if (current->value > newNode->value) {
 			if (previous == NULL) {
 				newNode->next = current;
@@ -55,9 +64,10 @@ void insert(int value, node **head) {
 			newNode->next = current;
 			return;
 		}
+
 		previous = current;
 		current = current->next;
 	}
 
-	current->next = newNode;
+	previous->next = newNode;
 }
