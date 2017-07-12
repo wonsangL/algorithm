@@ -12,18 +12,17 @@ typedef struct _coord {
 
 using namespace std;
 
-int main(){
-	int direction = 2; //first, heading for right
+int main() {
+	int direction = 2; //at first, heading for east(right)
 	int M = 0, n = 0, input = 0;
 	string command;
 	COORD coord = { 0, 0 };
-
 
 	std::cin >> M;
 	std::cin >> n;
 
 	for (int i = 0; i < n; i++) {
-		std::cin >>command;
+		std::cin >> command;
 		std::cin >> input;
 
 		if (command.compare("MOVE") == 0) {
@@ -43,7 +42,7 @@ int main(){
 			}
 		}
 		else {
-			if (input == 0){
+			if (input == 1) {
 				direction += 1;
 
 				if (direction > 3)
@@ -54,8 +53,8 @@ int main(){
 
 				if (direction < 0)
 					direction = 3;
-			}		
-		}	
+			}
+		}
 
 		if (coord.x > M || coord.y > M || coord.x < 0 || coord.y < 0) {
 			std::cout << "-1" << std::endl;
