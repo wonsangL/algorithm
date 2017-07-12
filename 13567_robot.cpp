@@ -13,7 +13,7 @@ typedef struct _coord {
 using namespace std;
 
 int main(){
-	int direction = 0; //처음에는 동쪽을 향한다.
+	int direction = 2; //처음에는 동쪽을 향한다.
 	int M = 0, n = 0, input = 0;
 	string command;
 	COORD coord = { 0, 0 };
@@ -35,10 +35,10 @@ int main(){
 				coord.y -= input;
 				break;
 			case LEFT:
-				coord.x += input;
+				coord.x -= input;
 				break;
 			case RIGHT:
-				coord.x -= input;
+				coord.x += input;
 				break;
 			}
 		}
