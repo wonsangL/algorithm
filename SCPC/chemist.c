@@ -1,3 +1,8 @@
+/*
+삼성 SCPC 화학자의 문장 문제
+점수: 91.63, 수행시간: 0.4, 메모리 6896
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
