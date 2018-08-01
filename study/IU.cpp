@@ -1,28 +1,33 @@
 #include<iostream>
-#include<math.h>
+#include<cmath>
 
 using namespace std;
 
-int Check(int dif, int level, int def, int limit, int &answer) {
+int Check(int dif, int level, int def, int limit) {
+	int result = 0;
+
 	if (dif == 0) {
-		answer++;
-		return 0;
+		return 1;
 	}
-	else fi(dif < 0) {
-		return -1;
+	else if(dif < 0) {
+		return 0;
 	}
 
 	int temp = 2 * pow(3, level - def);
 
-	int recursive = dif / temp;
-
-	for (int i = 1; i < limit && i < recursive; i++) {
-		Check(dif - temp * i, level, def - 1, i, answer);
+	for (int i = 1; i <= limit && i <= (def - 1)  * 2; i++) {
+		result += Check(dif - temp * i, level, def - 1, i);
 	}
+
+	return result;
 }
 
 int solution(int n) {
 	int answer = 0, level = 1, min;
+
+	if (n % 2 == 0) {
+		return 0;
+	}
 
 	while (true) {
 		if (n < pow(3, level) + level * 2) {
@@ -32,14 +37,14 @@ int solution(int n) {
 		level++;
 	}
 
-	min = pow(3, level) + level * 2;
+	min = pow(3, level - 1) + (level - 1) * 2;
 
-	Check(n - min, level, level, 38, answer);
+	answer = Check(n - min, level - 1, level - 1, 36);
 
 	return answer;
 }
 
-int main(){
+int main() {
 	int input;
 
 	cin >> input;
