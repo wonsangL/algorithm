@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 int Check(int dif, int level, int curLevel, int limit) {
 	int result = 0;
 
@@ -16,9 +17,10 @@ int Check(int dif, int level, int curLevel, int limit) {
 	int temp = 2 * pow(3, level - curLevel);
 
 	for (int i = 1; i <= limit && i <= (curLevel - 1)  * 2; i++) {
-		result += Check(dif - temp * i, level, curLevel - 1, i);
+		if((dif - temp * i) % 3 == 0)
+			result += Check(dif - temp * i, level, curLevel - 1, i);
 	}
-
+	
 	return result;
 }
 
