@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -53,8 +52,10 @@ string solution(int n, int t, int m, vector<string> timetable) {
 			index++;
 		}
 
-		if (passenger[index].size() >= m)
+		if (passenger[index].size() >= m) {
+			shuttleTime += t;
 			index++;
+		}
 
 		if (index >= n)
 			break;
@@ -64,7 +65,7 @@ string solution(int n, int t, int m, vector<string> timetable) {
 
 	if (passenger[n - 1].size() < m) {
 		answer = lastShuttle;
-	}		
+	}
 	else {
 		int max = -1;
 
@@ -75,11 +76,6 @@ string solution(int n, int t, int m, vector<string> timetable) {
 
 		answer = max - 1;
 	}
- 
-	return parseResult(answer);
-}
 
-int main() {
-	cout << solution(10, 60, 2, { "09:10", "09:09", "08:00" }) << endl;
-	return 0;
+	return parseResult(answer);
 }
